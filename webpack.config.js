@@ -15,7 +15,6 @@ module.exports = {
   ],
   devServer: {
     contentBase: 'build',
-    host: '192.168.1.150',
     port: 9000,
     open: true
   },
