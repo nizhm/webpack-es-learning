@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/Nizhiming2019/webpack-es-learning.git"
   },
-  "keywords": ["ECMAScript"],
+  "keywords": [
+    "ECMAScript",
+    "Webpack"
+  ],
   "author": "Zhiming Ni",
   "license": "ISC",
   "bugs": {
