@@ -1,0 +1,1 @@
+setTimeout(console.log, 500, new Promise(() => {}))
