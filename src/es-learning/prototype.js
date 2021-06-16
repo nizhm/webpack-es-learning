@@ -3,6 +3,7 @@ function Person(name, age, eyeColor) {
   this.eyeColor = eyeColor
   this.symbolKey = Symbol('nizm')
   this[this.symbolKey] = '@@nizm'
+  this[Symbol('nizm')] = '545465'
 }
 Person.prototype.myName = 'nizm'
 let newPerson = new Person('nizm', 24, 'black')
@@ -16,6 +17,7 @@ Object.defineProperty(newPerson, 'findPrototype', {
   enumerable: false,
   configurable: true
 })
-console.log(Symbol.keyFor(Symbol.for('nizm')))
+console.log(Symbol.for('nizm'))
 console.log(newPerson)
-console.log(newPerson[newPerson.symbolKey])
+console.log(newPerson[Symbol.for('nizm')])
+console.log(newPerson[Object.getOwnPropertySymbols(newPerson)[0]])
