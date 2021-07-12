@@ -1,8 +1,8 @@
 /**
  * @description object的key
- * 1. 所有primitive value都可以作为key使用;
+ * 1. 所有primitive value都可以作为key使用；其实会被转化为string或symbol，key只有这两种值；
  * 2. number类型会被转化为string类型；而且后声明会覆盖前声明的值；
- * 3.object类型也可以，不过会被转化为primitive value(调用valueOf或者toString)；
+ * 3.object类型也可以，不过会被转化为string value(调用valueOf或者toString)；
  * 4.按key访问时，null、undefined、true、false、正常的string，可以使用点操作符.访问；其他要用计算操作符[]访问；
  */
 const sym = Symbol('sym')
