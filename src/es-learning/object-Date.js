@@ -1,10 +1,11 @@
-
 /**
  * @object %Date%
  * 1.Date.now():返回当前时刻对应的timestamp，返回值为Number类型；
  * 2.Date.UTC():接收不少于2个参数，返回对应的timestamp(0个或1个参数，返回NaN)，返回值为Number类型；
  * 3.Date.parse():把字符串解析为timestamp，返回值为Number类型；
+ * 4.返回timestamp的几个函数都是返回的[[DateValue]]的值（Date.now、Date.parse、Date.UTC、getTime）；
  */
+
 /**
  * @object Date Instance
  * 1.[[DateValue]]存的是UTC的timestamp，输出时才转换为local；
@@ -12,7 +13,8 @@
  * 2.get系列函数，转换后取值输出，****FromTime(LocalTime(timestamp))；
  * 3.toString系列函数，输出时转换，<Runtime Semantics>toDateString(timestamp);
  */
-let aDate = new Date()
+
+let aDate = new Date('2021-07-20')
 //console.log(Date.now())
 //console.log(Date.UTC(2012, 6, 8))
 //console.log(Date.parse('2012-07-08'))
@@ -52,4 +54,8 @@ let aDate = new Date()
  * 4.2 @deprecated setYear(): 千禧年问题;
  * 4.3 @deprecated toGMTString(): 有些浏览器还支持;
  */
-console.log(aDate.getTimezoneOffset())
+
+console.log(aDate.getTime()/(24*60*60*1000))
+console.log(Date.now()/(24*60*60*1000))
+console.log(Date.parse('2021-07-20')/(24*60*60*1000))
+console.log(Date.UTC(2021, 6, 20)/(24*60*60*1000))
