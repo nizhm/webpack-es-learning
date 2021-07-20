@@ -14,7 +14,7 @@
  * 3.toString系列函数，输出时转换，<Runtime Semantics>toDateString(timestamp);
  */
 
-let aDate = new Date('2021-07-20')
+let aDate = new Date()
 //console.log(Date.now())
 //console.log(Date.UTC(2012, 6, 8))
 //console.log(Date.parse('2012-07-08'))
@@ -28,7 +28,7 @@ let aDate = new Date('2021-07-20')
  * 2.1 toUTCString(): 'day, DD MM YYYY HH:mm:ss GMT';
  * 2.2 toISOString(): 'YYYY-MM-DDTHH:mm:ss.sssZ';
  * 2.3 toJSON(): 'YYYY-MM-DDTHH:mm:ss.sssZ';同toISOString的值；
- * 2.4 toLocalString(): 'YYYY/MM/DD AM|PMHH:mm:ss';
+ * 2.4 toLocaleString(): 'YYYY/MM/DD AM|PMHH:mm:ss';
  *
  * 2.5 toDateString(): 'day MM DD YYYY';
  * 2.6 toLocaleDateString(): 'YYYY/MM/DD';
@@ -49,13 +49,41 @@ let aDate = new Date('2021-07-20')
  * 3.7 getMilliSeconds(): 0-999，0毫秒-999毫秒;
  * 3.8888 get --> set, get --> getUTC, getUTC --> setUTC;
  * 3.9999 没有setDay();
+ * 3.1000 get系列返回的都是number类型；
  *
  * 4.1 @deprecated getYear(): 千禧年问题;
  * 4.2 @deprecated setYear(): 千禧年问题;
  * 4.3 @deprecated toGMTString(): 有些浏览器还支持;
  */
 
-console.log(aDate.getTime()/(24*60*60*1000))
-console.log(Date.now()/(24*60*60*1000))
-console.log(Date.parse('2021-07-20')/(24*60*60*1000))
-console.log(Date.UTC(2021, 6, 20)/(24*60*60*1000))
+function parseTime(val) {
+  return val > 10 ? val : '0' + val
+}
+
+function formatTime(time, format) {
+  const t = new Date(time)
+  if(format) {
+    const y = t.getFullYear()
+    const m = parseTime(t.getMonth() + 1)
+    const d = parseTime(t.getDate())
+    const h = parseTime(t.getHours())
+    const mi = parseTime(t.getMinutes())
+    const s = parseTime(t.getSeconds())
+    const UTCStr = t.toUTCString()
+    const day = UTCStr.slice(0, UTCStr.indexOf(','))
+    let val = format
+    val = val.replace('YYYY', y)
+    val = val.replace('MM', m)
+    val = val.replace('DD', d)
+    val = val.replace('HH', h)
+    val = val.replace('mm', mi)
+    val = val.replace('ss', s)
+    val = val.replace('day', day)
+    return val
+  }else {
+    const tStr = t.toISOString()
+    return tStr.slice(0, -5).replace('T', ' ')
+  }
+}
+const myDate = formatTime(aDate.getTime(), 'day >= YYYY-MM-DD =< HH:mm:ss')
+console.log(myDate)
