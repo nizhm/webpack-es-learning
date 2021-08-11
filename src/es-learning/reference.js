@@ -5,4 +5,3 @@ let anotherSum = sum
 sum = {
   num: '9'
 }
-console.log(anotherSum)
