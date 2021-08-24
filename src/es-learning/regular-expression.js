@@ -31,6 +31,13 @@
  *        1.3.1 global模式下，每配对到一次，返回{ Array } | true，lastIndex记录下次匹配开始位置；
  *        1.3.2 global模式下，未匹配到，返回null | false，lastIndex重置为0；
  *        1.3.3 非global模式下，以上两种情况，lastIndex都不会变，一直是0；
+ * @Object %RegExp%
+ *    1. new RegExp(pattern string, flags string);
+ *    2. 正则需要匹配metacharacters时，regExp中需要转义，pattern string中需要二次转义；
+ *    3. 二次转义时，其实就是对转义字符进行转义;
+ *    4. 特别的情况时，要匹配转义字符本身时，regExp中的\\需要在pattern string中二次转义为\\\\;
+ *    5. pattern string必需string类型，而转义字符在字符串本身，也是转义字符，所以需要转义为字符；
+ *    6. RegExp解析pattern string时会把字符串本身的转义字符去掉，保留其他字符作为正则表达式；
  */
 
 function printRegExp(proto, regExpObj) {
@@ -41,16 +48,6 @@ function printRegExp(proto, regExpObj) {
     console.log(`${ item }: ${ regExpObj[item] }`)
   }
 }
-const regExp = new RegExp('[1-9\-]{2,3}', 'gi')
-const str = '01023045601110'
-const str2 = '07890222204560'
-console.log(regExp.valueOf() == regExp.toString())
-console.log(regExp.lastIndex)
-console.log(regExp.exec(str))
-console.log(regExp.lastIndex)
-console.log(regExp.test(str2))
-console.log(regExp.lastIndex)
-console.log(regExp.test(str))
-console.log(regExp.lastIndex)
-console.log(regExp.test(str))
-console.log(regExp.lastIndex)
+const regExp = new RegExp('\\^\\$\\\\\.\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|', 'gi')
+const regExp2 = /[1-9]\\$/gi
+console.log(regExp2 instanceof RegExp)
