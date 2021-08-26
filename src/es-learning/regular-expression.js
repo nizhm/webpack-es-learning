@@ -2,7 +2,7 @@
  * @RegularExpression
  * @Object %RegExpPrototype%
  *    1.constructor  %RegExp%
- *    2.source       pattern string [[OriginalSource]]
+ *    2.source       [[OriginalSource]] 即正则表达式字面量中 /.../ 之间的内容
  *    3.flags        sgimyu  [[OriginalFlags]]
  *    4.dotAll       's' => true (ES10)
  *    5.global       'g' => true
@@ -50,4 +50,4 @@ function printRegExp(proto, regExpObj) {
 }
 const regExp = new RegExp('\\^\\$\\\\\.\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|', 'gi')
 const regExp2 = /[1-9]\\$/gi
-console.log(regExp2 instanceof RegExp)
+console.log(regExp2.source)
