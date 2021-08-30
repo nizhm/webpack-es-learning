@@ -4,6 +4,7 @@
  *  2.array-like返回false；
  *  3.iterator返回false；
  */
+
 const fn = function (val) {
   console.log(Array.isArray(arguments))
   console.log(arguments)
