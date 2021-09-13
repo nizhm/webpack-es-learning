@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "learning ES",
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
@@ -16,7 +17,7 @@
     "ECMAScript",
     "Webpack"
   ],
-  "author": "Zhiming Ni",
+  "author": "nzhming",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Nizhiming2019/webpack-es-learning/issues"
