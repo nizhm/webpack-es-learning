@@ -21,16 +21,16 @@
 //  console.log(resultPromise)
 //},5000)
 //console.log(Promise.resolve(new Error()))
-const promise = new Promise(resolve => {
+const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('111')
+    resolve('error')
   }, 1000)
 })
 promise.then(res => {
+  throw new Error(res)
   console.log('then:' + res)
-  console.log(val)
 }).catch(err => {
-  console.log('error:' + err)
+  console.log('error:' + (typeof err === 'object'))
 }).finally(() => {
   console.log('finally:')
 })
