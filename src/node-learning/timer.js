@@ -13,4 +13,4 @@ timer();
 setTimeout(() => {
   console.log(`endTime(${ endTime }) - startTime(${ startTime }): ${ endTime - startTime }`);
   console.log(`System waiting time: ${ endTime - startTime - 1000 }ms`);
-}, 2000);
+}, 1500);
