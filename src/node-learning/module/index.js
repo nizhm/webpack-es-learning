@@ -1,2 +1,3 @@
-import { printMsg } from './print.js';
+import printMsg from './print.js';
 printMsg('nzhming');
+console.log(printMsg)
