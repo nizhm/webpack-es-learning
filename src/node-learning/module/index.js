@@ -1,3 +1,3 @@
-import printMsg from './print.js';
+const printMsg = require('./print');
 printMsg('nzhming');
 console.log(printMsg)
