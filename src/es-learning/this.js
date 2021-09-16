@@ -43,3 +43,31 @@ const arrowFun = (...arg) => {
   console.log(arg)
 }
 //arrowFun(33, 44)
+
+/**
+ *
+ */
+const printInput = function (name, age) {
+  console.log(`
+  name: ${ name }
+  age: ${ age }
+  arguments: ${ JSON.stringify(arguments) }
+  `)
+  //name = 'js'
+  //console.log('After variable changed')
+  //console.log(`
+  //name: ${ name }
+  //age: ${ age }
+  //arguments: ${ JSON.stringify(arguments) }
+  //`)
+  //arguments[0] = 'js'
+  //console.log('After arguments changed')
+  //console.log(`
+  //name: ${ name }
+  //age: ${ age }
+  //arguments: ${ JSON.stringify(arguments) }
+  //`)
+  console.log(this)
+}
+printInput('nzhming', 24)
+console.log(global)
