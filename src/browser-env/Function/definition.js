@@ -1,3 +1,24 @@
+/**
+ * 比较8种不同形式声明函数获得的函数对象的区别；
+ *  1.standard：function fn(...params) {...}
+ *  2.literal + assignment： let fn = function (...params) {...}
+ *  3.arrow function + assignment: let fn = (...params) => {...}
+ *  4.Function + assignment: let fn = new Function(...)
+ *  5.standard： (function fn(...params) {...})
+ *  6.literal: (function (...params) {...})
+ *  7.arrow function: ((...params) => {...})
+ *  8.Function: (new Function(...))
+ * @aspect name property
+ * @aspect typeof operator
+ * @aspect instanceof operator
+ * @aspect function texture character
+ * @aspect Object.getPrototypeOf
+ * @aspect Object.getOwnPropertyDescriptors
+ * @aspect Object.getOwnPropertyNames
+ * @aspect Object.getOwnPropertySymbols
+ * @since 20220119
+ * @author nizhm
+ * */
 function funA(name, age) { console.log(`Function A: ${name} is ${age} years old!`) }
 
 let funB = function (name, age) { console.log(`Function B: ${name} is ${age} years old!`) }
