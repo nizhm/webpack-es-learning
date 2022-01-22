@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript">
+        /**
+         * 1.script scope: codes embed by script and codes within a console panel；
+         * 2.function scope：FunctionDeclaration;
+         * 3.module scope：ModuleDeclaration;模块中定义的变量，就算用var定义，也会在module scope；
+         * */
+    </script>
+</head>
+<body>
+<p>Demo page</p>
+<script src="this.js"></script>
+<script src="script.js"></script>
+<script type="application/javascript">
+  debugger;
+    function sayHello(name, greet) {
+      console.log(greet, + ', ' + name + '!')
+    }
+    let name = 'nizhm'
+    var greet = 'Hello'
+    sayHello(name, greet)
+</script>
+<script type="module" src="module.js"></script>
+</body>
+</html>
