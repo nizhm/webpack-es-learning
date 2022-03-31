@@ -19,7 +19,7 @@ class Work{
   printWork() {
     console.log(this.salary, this.year)
   }
-  // accessor properties `profile` will be put into `Work.prototype`
+  // accessor property `profile` will be put into `Work.prototype`
   get profile() {
     return this.year + ',' + this.salary
   }
