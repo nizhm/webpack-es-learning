@@ -36,10 +36,10 @@ WorkB.year = 2022
 WorkB.thisRefer = WorkB
 WorkB.prototypeRefer = WorkB.prototype
 // `WorkB.printSalary` is enumerable, but `Work.printSalary` is not
-WorkB.printSalary = function () {
+WorkB.printSalary = function printSalary() {
   console.log(this.salary)
 }
 // Both `WorkB.printYear` and `Work.printYear` are enumerable
-WorkB.printYear = () => {
+WorkB.printYear = function () {
   console.log(this.salary)
 }
