@@ -10,12 +10,12 @@ class Work {
   static year = 2020
   static thisRefer = Work
   static prototypeRefer = Work.prototype
-  // can not be initiated by `new` operator(for reason, without constructor aka [[Construct]])
+  // can not be instantiated by `new` operator(for reason, without constructor aka [[Construct]])
   static printSalary() {
     // `this` reference is decided when `printSalary` is called
     console.log(this.salary)
   }
-  // can be initiated
+  // can be instantiated
   static printYear = function () {
     console.log(this.year)
   }
