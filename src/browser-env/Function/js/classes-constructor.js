@@ -62,6 +62,7 @@ WorkB.prototype.printWork = function printWork() {
   console.log(this.salary, this.year)
 }
 Object.defineProperty(WorkB.prototype, 'profile', {
+  // es6 new feature: `get() {}` instead of `get: function () {}`
   get() {
     return this.year + ',' + this.salary
   },
