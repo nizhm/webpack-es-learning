@@ -62,6 +62,9 @@ function WorkB(salary = 10000, year = 2022) {
   }
 }
 WorkB.isOk = true
+// writable: true -> false, same to `Work.prototype`.
+// so that you can not assign another object to `WorkB.prototype`. Assignment will be ignored in no-strict mode.
+Object.defineProperty(WorkB, 'prototype', { writable: false })
 WorkB.prototype.printWork = function printWork() {
   console.log(this.salary, this.year)
 }
