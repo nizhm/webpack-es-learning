@@ -30,6 +30,12 @@ class Work {
 }
 
 function WorkB() {
+  // !new.target
+  // Or !(this instanceof WorkB)
+  // @see https://github.com/vuejs/vue/blob/2.6/src/core/instance/index.js
+  if (!new.target) {
+    throw new TypeError(`Constructor function ${WorkB.name} cannot be invoked without 'new'`)
+  }
 }
 WorkB.salary = 10001
 WorkB.year = 2022

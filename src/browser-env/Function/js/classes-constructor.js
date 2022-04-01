@@ -41,6 +41,10 @@ class Work{
 }
 
 function WorkB(salary = 10000, year = 2022) {
+  if (!(this instanceof WorkB)) {
+    throw new TypeError(`Constructor function ${WorkB.name} cannot be invoked without 'new'`)
+  }
+
   if (WorkB.isOk) {
     this.salary = salary
     this.year = year
