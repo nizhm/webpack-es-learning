@@ -50,6 +50,7 @@ WorkB.printYear = function () {
   console.log(this.salary)
 }
 
+// Object.defineProperty(WorkB, 'prototype', { writable: false })
 const prototypeObj = {}
 Object.defineProperty(prototypeObj, 'constructor', {
   configurable: true,
