@@ -16,7 +16,7 @@ let sayHello = function sayHello(name) {
   debugger
   console.log(`Hello, ${name}`)
   // `sayHello` refers to the variable inside the function body scope
-  // rather than the outside scope's `sayHello` which declared by `let`
+  // rather than the outside scope's `sayHello` which declared by `let`.
   // ignored, however a TypeError occurs in strict mode
   sayHello = 123
   console.log(sayHello)
