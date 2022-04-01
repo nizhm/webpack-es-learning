@@ -10,6 +10,9 @@ let sayHello = function sayHello(name) {
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function#named_function_expression
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function#parameters
    */
+  /**
+   * ECMA2015 specification Page-264-Note2(Edge PDF Viewer)
+   */
   debugger
   console.log(`Hello, ${name}`)
   // `sayHello` refers to the variable inside the function body scope
