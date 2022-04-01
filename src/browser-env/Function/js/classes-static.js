@@ -49,3 +49,12 @@ WorkB.printSalary = function printSalary() {
 WorkB.printYear = function () {
   console.log(this.salary)
 }
+
+const prototypeObj = {}
+Object.defineProperty(prototypeObj, 'constructor', {
+  configurable: true,
+  value: WorkB,
+  writable: true
+})
+// prototype property is writable(default for function)
+WorkB.prototype = prototypeObj
