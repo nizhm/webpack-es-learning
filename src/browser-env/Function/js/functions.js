@@ -21,3 +21,27 @@ let obj = {
     console.log(this.bFunction)
   }
 }
+
+function person(n, age) {
+  this.n = n
+  this.age = age
+  this.printProfile = function () {
+    console.log(this.n, this.age)
+    console.log(this)
+  }
+  console.log(this.n, this.age)
+  console.log(this)
+}
+person.prototype.sort = Array.prototype.sort
+
+// IIFE is Expression(verbosely)
+(
+  function IIFEFun() {
+    'use strict'
+    console.log('IIFE')
+    console.log(IIFEFun)
+    // ignored in non-strict mode
+    IIFEFun = null
+    console.log(IIFEFun)
+  }
+) ()
