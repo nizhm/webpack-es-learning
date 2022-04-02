@@ -1,5 +1,6 @@
 /**
  * 1.`async` keyword makes the `return` value Or an `Error` wrapped by a Promise object.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
  */
 
 async function consoleName(n = 'nizhm') {
