@@ -80,6 +80,8 @@ class Promesa {
         this.#invokeRejectedHandler()
       }
     }
+    // put executor to message queen
+    // for reason that executor should run after blocks(then/catch/finally) initiated.
     setTimeout(() => {
       executor(this.#resolvePromesa, this.#rejectPromesa)
     }, 0)
@@ -92,7 +94,9 @@ Object.defineProperty(Promesa.prototype, Symbol.toStringTag, {
   value: 'Promesa'
 })
 
-// test how `Promise` execute executor
+/**
+ * test how `Promise` execute executor
+ */
 // new Promise(resolve => {
 //   debugger
 //   if (true) {
@@ -100,7 +104,9 @@ Object.defineProperty(Promesa.prototype, Symbol.toStringTag, {
 //   }
 // })
 
-// test `callback` as a parameter
+/**
+ * test `callback` as a parameter
+ */
 // const executor = (resolve, reject) => {
 //   if (true) {
 //     resolve(123)
@@ -120,25 +126,25 @@ Object.defineProperty(Promesa.prototype, Symbol.toStringTag, {
  * 2.`then` and `catch` block handle the promise from last block.
  * @type {Promise<unknown>}
  */
-let promise = new Promise((resolve, reject) => {
-  reject('A')
-})
-let promise2 = promise.then(result => {
-  console.log('onFulfilled handler')
-  console.log(this)
-  throw result + ',error'
-}, reason => {
-  console.log('onRejectedOfThen handler')
-  console.log(this)
-  throw reason + ',error'
-}).catch(reason => {
-  console.log('onRejectedOfCatch handler')
-  console.log(this)
-  throw reason + ',error'
-}).finally(() => {
-  console.log('onSettled handler')
-  console.log(this)
-})
+// let promise = new Promise((resolve, reject) => {
+//   reject('A')
+// })
+// let promise2 = promise.then(result => {
+//   console.log('onFulfilled handler')
+//   console.log(this)
+//   throw result + ',error'
+// }, reason => {
+//   console.log('onRejectedOfThen handler')
+//   console.log(this)
+//   throw reason + ',error'
+// }).catch(reason => {
+//   console.log('onRejectedOfCatch handler')
+//   console.log(this)
+//   throw reason + ',error'
+// }).finally(() => {
+//   console.log('onSettled handler')
+//   console.log(this)
+// })
 
 let promesa = new Promesa((resolve) => {
   setTimeout(() => {
