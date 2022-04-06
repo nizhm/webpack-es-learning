@@ -3,6 +3,15 @@
  * spanish Promesa.
  */
 
+// @see https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask#when_queuemicrotask_isnt_available
+if (typeof self.queueMicrotask !== "function") {
+  self.queueMicrotask = function (callback) {
+    setTimeout(() => {
+      try { callback() } catch(e) { throw e }
+    }, 0)
+  }
+}
+
 class Promesa {
   // static fields
   static PromesaStates
@@ -53,6 +62,8 @@ class Promesa {
   #invokeRejectedHandler
   #invokeSettledHandler
   constructor(executor) {
+    if (typeof executor !== 'function') throw new TypeError('Promesa resolver undefined is not a function')
+
     this.#PromesaState = 'pending'
     this.#PromesaResult = undefined
     this.#invokeFulfilledHandler = () => {
@@ -80,11 +91,12 @@ class Promesa {
         this.#invokeRejectedHandler()
       }
     }
-    // put executor to message queen
+    // put executor to tasks queue
     // for reason that executor should run after blocks(then/catch/finally) initiated.
-    setTimeout(() => {
-      executor(this.#resolvePromesa, this.#rejectPromesa)
-    }, 0)
+    // setTimeout(() => {
+    //   executor(this.#resolvePromesa, this.#rejectPromesa)
+    // }, 0)
+    queueMicrotask(() =>  { executor(this.#resolvePromesa, this.#rejectPromesa) })
   }
 }
 
