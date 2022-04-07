@@ -2,12 +2,25 @@
  * event loop
  * 1.loop starts
  * 2.loop
- *  2.1 priority A: user interaction/script/...
+ *  2.1 priority A: DOM action/script/network request/start timer/...
  *  2.2 priority B: microtasks queue
  *  2.3 priority C: a task of old tasks queue
  * 3.rerender/paint
  * 4.loop ends
  *
+ * tasks queue
+ * 1.Script and Module initial
+ * 2.timer callback
+ * 3.asynchronous network request callback(async XMLHttpRequest and fetch API)
+ * 4.DOM action callback(click/keyboard/onload/...)
+ *
+ * microtasks queue
+ * 1.promise callback(Promise/async-await)
+ * 2.MutationObserver callback
+ * 3.queueMicrotask()
+ *
+ * questions
+ * 1.the sign of event loop ends??? @since 20220407
  */
 
 console.log('script starts: -------------------------------')
@@ -85,3 +98,47 @@ console.log('script ends: ---------------------------------')
 // microtask C pushed
 // microtask C
 // task 2
+
+function eventLoopA() {
+  console.log('function `eventLoopA` starts: ---------------------------------')
+  setTimeout(() => {
+    console.log('timer111')
+  })
+  console.log('timer111 pushed')
+  queueMicrotask(() => {
+    console.log('microtasks111')
+  })
+  console.log('microtasks111 pushed')
+  console.log('function `eventLoopA` ends: ---------------------------------')
+}
+function eventLoopB() {
+  console.log('function `eventLoopB` starts: ---------------------------------')
+  setTimeout(() => {
+    console.log('timer222')
+  })
+  console.log('timer222 pushed')
+  queueMicrotask(() => {
+    console.log('microtasks222')
+  })
+  console.log('microtasks222 pushed')
+  console.log('function `eventLoopB` ends: ---------------------------------')
+}
+
+eventLoopA()
+eventLoopB()
+
+/**
+ * Result
+ */
+// function `eventLoopA` starts: ---------------------------------
+// timer111 pushed
+// microtasks111 pushed
+// function `eventLoopA` ends: ---------------------------------
+// function `eventLoopB` starts: ---------------------------------
+// timer222 pushed
+// microtasks222 pushed
+// function `eventLoopB` ends: ---------------------------------
+// microtasks111
+// microtasks222
+// timer111
+// timer222
