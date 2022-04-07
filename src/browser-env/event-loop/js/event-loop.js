@@ -2,7 +2,7 @@
  * event loop
  * 1.loop starts
  * 2.loop
- *  2.1 priority A: DOM action/script/network request/start timer/...
+ *  2.1 priority A: synchronous code execution/DOM action handle/network request send/start timer/...
  *  2.2 priority B: microtasks queue
  *  2.3 priority C: a task of old tasks queue
  * 3.rerender/paint
