@@ -28,3 +28,8 @@ Object.defineProperty(Person.prototype, Symbol.toStringTag, {
   configurable: true,
   value: 'Person'
 })
+
+// node(v14.10.1 to validate) also provide __proto__ accessor properties
+let person = new Person()
+console.log(person.__proto__)
+console.log(Object.getOwnPropertyDescriptors(Object.prototype))
