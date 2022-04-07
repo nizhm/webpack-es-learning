@@ -117,6 +117,10 @@ function eventLoopB() {
     console.log('timer222')
   })
   console.log('timer222 pushed')
+  Promise.resolve().then(() => {
+    console.log('microtasks333')
+  })
+  console.log('microtasks333 pushed')
   queueMicrotask(() => {
     console.log('microtasks222')
   })
