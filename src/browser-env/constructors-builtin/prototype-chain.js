@@ -1,24 +1,35 @@
 /**
- * get the prototype chain
+ * Get the prototype chain until `null`
  *
  * @param {Object|Function} obj - the object
- * @return {*[]}
+ * @return {*[]|undefined}
  */
+
 function getPrototypeChainOf(obj) {
-  if (! (obj && obj instanceof Object)) {
-    throw new TypeError(`${obj} is not an object`)
+  if (this instanceof getPrototypeChainOf) {
+    throw new TypeError(`function 'getPrototypeChainOf' is not a constructor`)
   }
+
+  if (obj === undefined || obj === null) {
+    throw new TypeError(`${obj} is not a type of {boolean|number|string|symbol|function|object}`)
+  }
+
 
   const prototypeChain = []
-  const getProto = function getProto(o) {
-    const proto = Object.getPrototypeOf(o)
-    prototypeChain.push(proto)
+  try {
+    const getProto = function getProto(o) {
+      const proto = Object.getPrototypeOf(o)
+      prototypeChain.push(proto)
 
-    if (proto !== null) {
-      getProto(proto)
+      if (proto !== null) {
+        getProto(proto)
+      }
     }
+    getProto(obj)
+  } catch(e) {
+    console.error(e)
+    return undefined
   }
-  getProto(obj)
 
   return prototypeChain
 }
