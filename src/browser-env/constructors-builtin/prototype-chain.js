@@ -6,14 +6,15 @@
  */
 
 function getPrototypeChainOf(obj) {
+  // invoked by [[Call]] only
   if (this instanceof getPrototypeChainOf) {
     throw new TypeError(`function 'getPrototypeChainOf' is not a constructor`)
   }
 
+  // wrapper types, object type and function type are available
   if (obj === undefined || obj === null) {
     throw new TypeError(`${obj} is not a type of {boolean|number|string|symbol|function|object}`)
   }
-
 
   const prototypeChain = []
   try {
@@ -21,6 +22,7 @@ function getPrototypeChainOf(obj) {
       const proto = Object.getPrototypeOf(o)
       prototypeChain.push(proto)
 
+      // retrieve next prototype object
       if (proto !== null) {
         getProto(proto)
       }
