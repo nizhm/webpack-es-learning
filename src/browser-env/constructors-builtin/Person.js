@@ -1,9 +1,9 @@
 /**
  * construct person
  * @constructor
- * @param personName person's full name
- * @param age person's age
- * @return person
+ * @param {string} personName - person's full name
+ * @param {string} age - person's age
+ * @return {Person}
  */
 
 function Person(personName, age) {
