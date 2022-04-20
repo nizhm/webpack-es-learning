@@ -108,3 +108,49 @@ const functionsObj = {
     console.log(this)
   }
 }
+
+// inner
+function innerFunction() {
+  console.log('innerFunction')
+  console.log(this)
+}
+
+// outer
+let outerFunction = () => {
+  console.log('outerFunction')
+  console.log(this)
+
+  console.log(place)
+}
+let outerObject = {
+  place: 'outerFunction'
+}
+
+// outer most
+function outerMostFunction() {
+  console.log('outerMostFunction')
+  console.log(this)
+  let place = 'outerMostFunction'
+  const fun = function() {
+    console.log('fun')
+    place = place + '111'
+    console.log(place)
+  }
+  fun()
+  let place2 = 'outerMostFunction'
+}
+let outerMostObject = {
+  place: 'outerMostFunction'
+}
+
+outerMostFunction()
+let obj = {
+  func: outerMostFunction
+}
+
+if ('createEvent' in document) {
+  let event = document.createEvent('HTMLEvents')
+  event.initEvent('change', true, true)
+  target.dispatchEvent(event)
+}
+
