@@ -153,7 +153,7 @@ const isIntrinsicTag = function isIntrinsicTag(tagName) {
     if (node instanceof HTMLUnknownElement) {
       isIntrinsic = false
     }
-  } catch(e) {
+  } catch(DOMException) {
     // invalid tag name
     isIntrinsic = false
   }
