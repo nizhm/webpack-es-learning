@@ -54,17 +54,15 @@ function showEvents(paths) {
   let pathsLength = paths.length
   let currentIndex = 0
   const changeBGColor = (index, paths) => {
+    console.log(index)
     const path = paths[index]
-    const previousPath = paths[index - 1]
+    let previousPath = null
+    if (index > 0) {
+      previousPath = paths[index - 1]
+    }
 
     if (path === window || path === document || path === document.documentElement) {
       alert(path)
-      setTimeout(() => {
-        if ((currentIndex + 1) <= (pathsLength - 1)) {
-          changeBGColor(currentIndex++, paths)
-        }
-      }, 100)
-
       if (document.body.style.backgroundColor) {
         document.body.style.backgroundColor = ''
       }
@@ -72,6 +70,12 @@ function showEvents(paths) {
       if (currentIndex === (pathsLength - 1)) {
         propagationPaths.length = 0
       }
+      setTimeout(() => {
+        if ((currentIndex + 1) <= (pathsLength - 1)) {
+          currentIndex++
+          changeBGColor(currentIndex, paths)
+        }
+      }, 100)
 
       return
     }
@@ -81,9 +85,10 @@ function showEvents(paths) {
 
     setTimeout(() => {
       if ((currentIndex + 1) <= (pathsLength - 1)) {
-        changeBGColor(currentIndex++, paths)
+        currentIndex++
+        changeBGColor(currentIndex, paths)
       }
-    }, 500)
+    }, 1000)
   }
   changeBGColor(currentIndex, paths)
 }
