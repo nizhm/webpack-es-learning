@@ -103,18 +103,24 @@ const clickHandler = function (ev) {
   }
 }
 
+const anotherHandler = (ev) => {
+  console.log('another handler')
+}
+
 const useCapture = true
-window.addEventListener('click', clickHandler, useCapture)
-document.addEventListener('click', clickHandler, useCapture)
-document.documentElement.addEventListener('click', clickHandler, useCapture)
-document.body.addEventListener('click', clickHandler, useCapture)
-container.addEventListener('click', clickHandler, useCapture)
-p.addEventListener('click', clickHandler, useCapture)
-p.childNodes[0].addEventListener('click', clickHandler, useCapture)
-window.addEventListener('click', clickHandler)
-document.addEventListener('click', clickHandler)
-document.documentElement.addEventListener('click', clickHandler)
-document.body.addEventListener('click', clickHandler)
-container.addEventListener('click', clickHandler)
-p.addEventListener('click', clickHandler)
-p.childNodes[0].addEventListener('click', clickHandler)
+const eventType = 'click'
+window.addEventListener(eventType, clickHandler, useCapture)
+document.addEventListener(eventType, clickHandler, useCapture)
+document.documentElement.addEventListener(eventType, clickHandler, useCapture)
+document.body.addEventListener(eventType, clickHandler, useCapture)
+container.addEventListener(eventType, clickHandler, useCapture)
+container.addEventListener(eventType, anotherHandler, useCapture)
+p.addEventListener(eventType, clickHandler, useCapture)
+p.childNodes[0].addEventListener(eventType, clickHandler, useCapture)
+window.addEventListener(eventType, clickHandler)
+document.addEventListener(eventType, clickHandler)
+document.documentElement.addEventListener(eventType, clickHandler)
+document.body.addEventListener(eventType, clickHandler)
+container.addEventListener(eventType, clickHandler)
+p.addEventListener(eventType, clickHandler)
+p.childNodes[0].addEventListener(eventType, clickHandler)
