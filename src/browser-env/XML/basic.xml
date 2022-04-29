@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<!DOCTYPE note SYSTEM "dtd\basic.dtd">-->
 <note
-    xmlns="https://github.com/nzhming/webpack-es-learning"
+    xmlns="https://www.w3schools.com"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemeLocation="https://github.com/nzhming/webpack-es-learning https://github.com/nzhming/webpack-es-learning/blob/2f668660ee55ef69d04ea1f7dc5c039494eeda7a/src/browser-env/XML/xsd/basic.xsd"
+    xsi:schemaLocation="https://www.w3schools.com xsd/basic.xsd"
 >
-<note>
     <to>Tove</to>
     <from>Jani</from>
     <heading>Reminder</heading>
-    <body height="175cm">&bodyDesc;</body>
+    <body>Don't forget me this weekend!</body>
+    <age>20</age>
+    <color></color>
+    <colour></colour>
 </note>

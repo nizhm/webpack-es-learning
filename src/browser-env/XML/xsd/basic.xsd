@@ -1,24 +1,21 @@
 <?xml version="1.0"?>
-<!--
-    XML Scheme Definition - XSD
-    1.import within the root element tag;
--->
-<xs:schema
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns="https://github.com/nzhming/webpack-es-learning"
-    targetNamespace="https://github.com/nzhming/webpack-es-learning"
-    elementFormDefault="qualified"
->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.w3schools.com"
+           xmlns="https://www.w3schools.com"
+           elementFormDefault="qualified">
+
     <xs:element name="note">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="to" type="xs:string"></xs:element>
-                <xs:element name="from" type="xs:string"></xs:element>
-                <xs:element name="heading" type="xs:string"></xs:element>
-                <xs:element name="body" type="xs:string"></xs:element>
+                <xs:element name="to" type="xs:string"/>
+                <xs:element name="from" type="xs:string"/>
+                <xs:element name="heading" type="xs:string"/>
+                <xs:element name="body" type="xs:string"/>
+                <xs:element name="age" type="xs:integer"></xs:element>
+                <xs:element name="color" type="xs:string" default="red"></xs:element>
+                <xs:element name="colour" type="xs:string" fixed="blue"></xs:element>
             </xs:sequence>
-            <xs:attribute name="height" type="xs:string" default="173cm"></xs:attribute>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="string"></xs:complexType>
+
 </xs:schema>
