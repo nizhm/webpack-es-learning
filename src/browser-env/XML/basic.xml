@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE note SYSTEM "dtd\basic.dtd">
+<!--<note-->
+<!--    xmlns="https://www.w3schools.com"-->
+<!--    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--    xsi:schemeLocation="https://www.w3schools.com/xml D:\\Projects\\All\\webpack-es-learning\\src\\browser-env\\XML\\xsd\\basic.xsd"-->
+<!--&gt;-->
+<note>
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body height="175cm">&bodyDesc;</body>
+</note>
