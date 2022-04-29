@@ -1,8 +1,8 @@
+<?xml version="1.0"?>
 <!--
     XML Scheme Definition - XSD
     1.import within the root element tag;
 -->
-<?xml version="1.0"?>
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns="https://www.w3schools.com"
