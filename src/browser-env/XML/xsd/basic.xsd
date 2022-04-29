@@ -5,8 +5,8 @@
 -->
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns="https://www.w3schools.com"
-    targetNamespace="https://www.w3schools.com"
+    xmlns="https://github.com/nzhming/webpack-es-learning"
+    targetNamespace="https://github.com/nzhming/webpack-es-learning"
     elementFormDefault="qualified"
 >
     <xs:element name="note">
