@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FileReader</title>
+    <style>
+        .page-header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .form-container {
+            width: 70%;
+            min-height: 450px;
+            margin: 0 auto;
+        }
+        .form-item {
+            display: block;
+            line-height: 32px;
+        }
+        .submit-btn {
+            text-align: center;
+        }
+    </style>
+</head>
+    <body>
+        <p class="page-header">Using FileReader API</p>
+        <div class="form-container">
+            <form
+                action=""
+                name="filesForm"
+                enctype="multipart/form-data"
+                method="post"
+            >
+                <p class="form-item">
+                    <label for="txtFile">txtFile:</label>
+                    <input
+                        id="txtFile"
+                        name="txtFile"
+                        type="file"
+                        accept="text/plain"
+                    />
+                </p>
+                <p class="form-item">
+                    <label for="txtFile">imageFile:</label>
+                    <input
+                        id="imageFile"
+                        name="imageFile"
+                        type="file"
+                        accept="image/*"
+                    />
+                </p>
+                <p class="form-item">
+                    <label for="excelFile">excelFile:</label>
+                    <input
+                        id="excelFile"
+                        name="excelFile"
+                        type="file"
+                        accept=".xlsx,.xls"
+                    />
+                </p>
+                <p class="form-item submit-btn">
+                    <input
+                        type="button"
+                        value="Submit"
+                        onclick="showFiles()"
+                    />
+                </p>
+            </form>
+        </div>
+        <script type="application/javascript">
+            function showFiles() {
+              console.log('showFiles')
+            }
+        </script>
+    </body>
+</html>
