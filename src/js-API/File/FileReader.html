@@ -39,6 +39,7 @@
                         name="txtFile"
                         type="file"
                         accept="text/plain"
+                        multiple
                     />
                 </p>
                 <p class="form-item">
@@ -56,7 +57,8 @@
                         id="excelFile"
                         name="excelFile"
                         type="file"
-                        accept=".xlsx,.xls"
+                        accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        multiple
                     />
                 </p>
                 <p class="form-item submit-btn">
@@ -70,7 +72,62 @@
         </div>
         <script type="application/javascript">
             function showFiles() {
-              console.log('showFiles')
+              const txtBlob = document.filesForm[0].files[0];
+              const imageBlob = document.filesForm[1].files[0];
+              const excelBlob = document.filesForm[2].files[0];
+              if (!(txtBlob || imageBlob || excelBlob)) return;
+
+              const reader = new FileReader();
+              reader.onabort = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+              reader.onerror = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+              reader.onload = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+              reader.onloadend = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+              reader.onloadstart = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+              reader.onprogress = function (ev) {
+                console.log(ev.type);
+                console.log(ev);
+              }
+
+              if (txtBlob) {
+                console.log('txtFile:');
+                reader.readAsText(txtBlob);
+                // setTimeout(() => {
+                //   reader.readAsBinaryString(txtBlob);
+                // });
+                // reader.readAsArrayBuffer(txtBlob);
+                // reader.readAsDataURL(txtBlob);
+              }
+
+              if (imageBlob) {
+                console.log('imageFile:');
+                reader.readAsText(imageBlob);
+                // reader.readAsBinaryString(imageBlob);
+                // reader.readAsArrayBuffer(imageBlob);
+                // reader.readAsDataURL(imageBlob);
+              }
+
+              if (excelBlob) {
+                console.log('excelFile:');
+                reader.readAsText(excelBlob);
+                // reader.readAsBinaryString(excelBlob);
+                // reader.readAsArrayBuffer(excelBlob);
+                // reader.readAsDataURL(excelBlob);
+              }
             }
         </script>
     </body>
