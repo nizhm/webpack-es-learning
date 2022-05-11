@@ -1,4 +1,4 @@
-const TypedArrayKeys = [
+const TypedArraysKey = [
   'Int8Array',
   'Int16Array',
   'Int32Array',
@@ -11,11 +11,11 @@ const TypedArrayKeys = [
   'BigUint64Array',
 ];
 
-const TypedArraysIterator = TypedArrayKeys.reduce((previousValue, currentValue) => {
+const TypedArraysIterator = TypedArraysKey.reduce((previousValue, currentValue) => {
   previousValue.push([currentValue, global[currentValue]]);
   return previousValue;
 }, []);
 
 const TypedArraysMap = new Map(TypedArraysIterator);
 
-export { TypedArrayKeys, TypedArraysMap }
+export { TypedArraysKey, TypedArraysMap }
