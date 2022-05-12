@@ -39,39 +39,51 @@ function getRangeOf(typedArray) {
  * Get the prototype chain until `null`
  *
  * @param {Object|Function} obj - the object
- * @return {*[]|undefined}
+ * @return {{Object|null} []|undefined}
  */
 
 const getChainOf = function getChainOf(obj) {
   // invoked by [[Call]] only
-  if (this instanceof getChainOf) {
-    throw new TypeError(`function 'getChainOf' is not a constructor`)
-  }
+  if (this instanceof getChainOf) throw new TypeError(`function 'getChainOf' is not a constructor`);
 
   // wrapper types, object type and function type are available
-  if (obj === undefined || obj === null) {
-    throw new TypeError(`${obj} is not a type of {boolean|number|string|symbol|function|object}`)
-  }
+  if (obj === undefined || obj === null) throw new TypeError(`${obj} is not a type of {boolean|number|string|symbol|function|object}`);
 
-  const prototypeChain = []
+  const prototypeChain = [];
   try {
     const getProto = function getProto(o) {
-      const proto = Object.getPrototypeOf(o)
-      prototypeChain.push(proto)
+      const proto = Object.getPrototypeOf(o);
+      prototypeChain.push(proto);
 
       // retrieve next prototype object
-      if (proto !== null) {
-        getProto(proto)
-      }
+      if (proto !== null) getProto(proto);
     }
-    getProto(obj)
+    getProto(obj);
   } catch(e) {
-    console.error(e)
-    return undefined
+    console.error(e);
+    return undefined;
   }
 
-  return prototypeChain
+  return prototypeChain;
 }
 
-export { getRangeOf, getChainOf }
+/**
+ * define a specified tag for an object
+ *
+ * @param o { Object }
+ * @param stringTag { undefined|string }
+ */
+const defTag = function defTag(o, stringTag) {
+  // invoked by [[Call]] only
+  if (this instanceof defTag) throw new TypeError(`function 'defTag' is not a constructor`);
+  // an object required
+  if (!(o && o instanceof Object)) throw 'The first parameter of "defTag" should be "object" type.';
+
+  Object.defineProperty(o, Symbol.toStringTag, {
+    value: stringTag,
+    configurable: true
+  });
+}
+
+export { getRangeOf, getChainOf, defTag }
 
