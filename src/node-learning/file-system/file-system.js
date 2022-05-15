@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 const options = [
   {
     "short": "AD",
@@ -1560,8 +1562,7 @@ const getOptions = function () {
   })
   return newItems
 }
-const fs = require('fs')
-const path = require('path')
+
 
 let text = JSON.stringify(getOptions())
 let file = path.join(__dirname, 'areaCodes.json')
