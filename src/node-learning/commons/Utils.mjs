@@ -77,7 +77,7 @@ const defTag = function defTag(o, stringTag) {
   // invoked by [[Call]] only
   if (this instanceof defTag) throw new TypeError(`function 'defTag' is not a constructor`);
   // an object required
-  if (!(o && o instanceof Object)) throw 'The first parameter of "defTag" should be "object" type.';
+  if (!(o && (o instanceof Object || o === Object.prototype))) throw 'The first parameter of "defTag" should be "object" type.';
 
   Object.defineProperty(o, Symbol.toStringTag, {
     value: stringTag,
