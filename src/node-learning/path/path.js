@@ -1,8 +1,26 @@
-const path = require('path');
+import path from 'path';
+import url, { URL, fileURLToPath, URLSearchParams } from 'url';
+import { getChainOf } from '../commons/Utils.mjs';
 
 const curPath = 'D:\\Desktop\\IntelliJWS\\webpack-es-learning\\src\\node-learning\\path.js';
 const curDir = 'D:\\Desktop\\IntelliJWS\\webpack-es-learning\\src\\node-learning\\';
 const relPath = './module/index.js';
+
+/**
+ * For CommonJS
+ * __dirname -> 'C:\Users\nizm2021\Desktop\IntelliJProjects\webpack-es-learning\src\node-learning\path'
+ * __filename -> ‘C:\Users\nizm2021\Desktop\IntelliJProjects\webpack-es-learning\src\node-learning\path\path.js’
+ *
+ * For ESM
+ * import.meta.url -> 'file:///C:/Users/nizm2021/Desktop/IntelliJProjects/webpack-es-learning/src/node-learning/path/path.js'
+ */
+
+const moduleURL = import.meta.url;
+// console.log(url.parse(moduleURL));
+console.log(Object.getOwnPropertyDescriptors(URLSearchParams));
+console.log(Object.getOwnPropertyNames(Object.getOwnPropertyDescriptors(URLSearchParams)).join('\n'));
+console.log(getChainOf(URLSearchParams));
+// console.log(URL.__proto__ === Function.prototype);
 
 /**
  * 获取路径的最后部分
@@ -30,12 +48,12 @@ const relPath = './module/index.js';
  * @return { string } 路径
  *
  */
-const filePath = path.join(__dirname, 'path.js');
+// const filePath = path.join(__dirname, 'path.js');
 //console.log(filePath, '|<>|', __filename === filePath)
 
 /**
  * 获取当前系统环境的路径定界符
- * @property path.delimiter
+ * @property path.js.delimiter
  * @return { string } 路劲定界符，":" POSIX, ";" Window；
  *
  */
