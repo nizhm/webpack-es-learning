@@ -88,6 +88,16 @@ async function convertFile(file) {
   console.log(await BtoPlain(file));
   console.log('hexStr:');
   console.log(await BtoPlain(file, 'hex'));
+
+  /**
+   * `Blob.prototype.arrayBuffer()` copies Blob and allocates new memory;
+   */
+  // const uint8Array = new Uint8Array(await file.arrayBuffer());
+  // uint8Array.fill(0);
+  // console.log('Uint8Array From File:');
+  // console.log(uint8Array);
+  // console.log('hexStr:');
+  // console.log(await BtoPlain(file, 'hex'));
 }
 
 function handleFile(changeEvent) {
