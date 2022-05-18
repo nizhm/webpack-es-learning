@@ -1,14 +1,31 @@
-const http = require('http');
+import http from 'http';
+import fs from 'fs';
 
+const configPath = 'config/server.json'
+let host = null;
+let port = null;
+try {
+  const buffer = fs.readFileSync(configPath);
+  const config = JSON.parse(buffer.toString());
+  host = config.host;
+  port = config.port;
+} catch(e) {
+  console.error(e);
+}
+if (!(host && port)) throw 'Can not get configuration'
 
-const hostname = '127.0.0.1';
-const port = 8888;
-const server = http.createServer(function (req, res){
+const server = http.createServer(function (request, response){
   console.log(arguments);
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World Http Server!');
+  const responseBody = {
+    code: '1',
+    message: 'success',
+    data: null
+  }
+  response.setHeader('Access-control-Allow-Origin', '*');
+  response.setHeader('Content-Type', 'application/json');
+  response.statusCode = 200;
+  response.end(JSON.stringify(responseBody));
 });
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${ hostname }:${ port }`);
+server.listen(port, host, () => {
+  console.log(`Server running at http://${ host }:${ port }`);
 });

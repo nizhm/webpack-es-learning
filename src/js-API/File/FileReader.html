@@ -15,11 +15,20 @@
             margin: 0 auto;
         }
         .form-item {
-            display: block;
+            display: inline-block;
             line-height: 32px;
+            padding: 8px;
+            margin: 8px;
         }
-        .submit-btn {
-            text-align: center;
+        .form_fileList_box {
+            width: 80%;
+            height: 450px;
+            border: 1px solid black;
+            padding: 8px;
+            margin: 8px;
+        }
+        #fileInput {
+            display: none;
         }
     </style>
 </head>
@@ -38,107 +47,23 @@
                         id="fileInput"
                         name="fileInput"
                         type="file"
-                        accept="image/tiff"
+                        accept="*"
                         multiple
                     />
-                </p>
-                <p class="form-item">
-                    <label for="txtFile">txtFile:</label>
-                    <input
-                        id="txtFile"
-                        name="txtFile"
-                        type="file"
-                        accept="text/plain"
-                        multiple
-                    />
-                </p>
-                <p class="form-item">
-                    <label for="txtFile">imageFile:</label>
-                    <input
-                        id="imageFile"
-                        name="imageFile"
-                        type="file"
-                        accept="image/*"
-                    />
-                </p>
-                <p class="form-item">
-                    <label for="excelFile">excelFile:</label>
-                    <input
-                        id="excelFile"
-                        name="excelFile"
-                        type="file"
-                        accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                        multiple
-                    />
-                </p>
-                <p class="form-item submit-btn">
                     <input
                         type="button"
-                        value="Submit"
-                        onclick="showFiles()"
+                        value="SelectFile"
+                        onclick="document.getElementById('fileInput').click()"
                     />
                 </p>
+                <p class="form-item">
+                    <input type="button" id="submit" value="Submit"/>
+                </p>
             </form>
+            <section class="form_fileList_box">
+                <p>No files currently selected</p>
+            </section>
         </div>
-        <script type="application/javascript">
-            function showFiles() {
-              const txtBlob = document.filesForm[0].files[0];
-              const imageBlob = document.filesForm[1].files[0];
-              const excelBlob = document.filesForm[2].files[0];
-              if (!(txtBlob || imageBlob || excelBlob)) return;
-
-              const reader = new FileReader();
-              reader.onabort = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-              reader.onerror = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-              reader.onload = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-              reader.onloadend = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-              reader.onloadstart = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-              reader.onprogress = function (ev) {
-                console.log(ev.type);
-                console.log(ev);
-              }
-
-              if (txtBlob) {
-                console.log('txtFile:');
-                reader.readAsText(txtBlob);
-                // setTimeout(() => {
-                //   reader.readAsBinaryString(txtBlob);
-                // });
-                // reader.readAsArrayBuffer(txtBlob);
-                // reader.readAsDataURL(txtBlob);
-              }
-
-              if (imageBlob) {
-                console.log('imageFile:');
-                reader.readAsText(imageBlob);
-                // reader.readAsBinaryString(imageBlob);
-                // reader.readAsArrayBuffer(imageBlob);
-                // reader.readAsDataURL(imageBlob);
-              }
-
-              if (excelBlob) {
-                console.log('excelFile:');
-                reader.readAsText(excelBlob);
-                // reader.readAsBinaryString(excelBlob);
-                // reader.readAsArrayBuffer(excelBlob);
-                // reader.readAsDataURL(excelBlob);
-              }
-            }
-        </script>
+        <script type="application/javascript" src="js/file-reader.js"></script>
     </body>
 </html>
