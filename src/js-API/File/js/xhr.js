@@ -1,5 +1,6 @@
 const files = document.getElementById('fileInput').files;
 const blob = files.length ? new Blob(files) : null;
+const data = blob;
 
 const method = 'POST';
 const API = 'http://localhost:9009';
@@ -19,7 +20,7 @@ function launchXHR() {
   xhr.setRequestHeader('Auth', 'ok');
   xhr.setRequestHeader('Content-Type', '*');
 
-  xhr.send(blob);
+  xhr.send(data);
 }
 
 export { launchXHR }
