@@ -22,8 +22,11 @@ const server = http.createServer(function (request, response){
     data: null
   }
   response.setHeader('Access-control-Allow-Origin', '*');
+  response.setHeader('Access-control-Allow-Headers', 'Content-Type, Auth');
+
   response.setHeader('Content-Type', 'application/json');
   response.statusCode = 200;
+  responseBody.data = request.headers;
   response.end(JSON.stringify(responseBody));
 });
 server.listen(port, host, () => {

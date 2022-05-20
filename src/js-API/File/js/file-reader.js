@@ -1,3 +1,5 @@
+import { launchXHR as handleSubmit } from './xhr.js';
+
 function updateFileList(files) {
   const box = document.querySelector('.form_fileList_box');
   while(box.firstChild) {
@@ -105,11 +107,6 @@ function handleFile(changeEvent) {
   updateFileList(this.files);
   // readFile(this.files[0]);
   convertFile(this.files[0]);
-}
-
-function handleSubmit(submitPointerEvent) {
-  console.log(submitPointerEvent);
-  console.log(this);
 }
 
 document.getElementById('fileInput').addEventListener('change', handleFile);
