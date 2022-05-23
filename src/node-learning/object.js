@@ -24,6 +24,7 @@ import stream,
   Transform
 } from 'stream';
 import buffer from 'buffer';
+import FormData from 'form-data';
 // import path from 'src/node-learning/path/path.js';
 
 defTag(Object.prototype, 'Object');
@@ -40,4 +41,4 @@ defTag(Object.prototype, 'Object');
 // console.log(IncomingMessage.prototype.__proto__ === Readable.prototype);
 // console.log(objectGetOwnPropertyDescriptors(ClientRequest));
 // console.log(objectGetOwnPropertyNames(objectGetOwnPropertyDescriptors(ClientRequest)).join('\n'));
-console.log(getChainOf(Duplex));
+console.log(getChainOf(FormData));

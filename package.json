@@ -37,6 +37,8 @@
     "webpack-dev-server": "^3.11.3"
   },
   "dependencies": {
+    "busboy": "^1.6.0",
+    "form-data": "^4.0.0",
     "lodash": "^4.17.21",
     "xmlhttprequest": "^1.8.0"
   }
