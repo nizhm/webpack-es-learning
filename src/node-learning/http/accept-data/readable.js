@@ -14,7 +14,7 @@ const handleRequest = (request, response) => {
   }
 
   let data = Buffer.alloc(0);
-  let chunk
+  let chunk;
   request.on('readable', function () {
     while((chunk = this.read()) !== null) {
       console.log('chunk');

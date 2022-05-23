@@ -1,8 +1,17 @@
 import { createServer as httpCreateServer } from 'http';
+import { URL } from 'url';
 import { config } from '../config/server.js';
 
 const handleRequest = (request, response) => {
   console.log(request.headers);
+
+  if (request.method === 'GET') {
+    const params = (new URL(request.headers.host + request.url)).searchParams.toString();
+    console.log('params');
+    console.log(params);
+    response.end(params);
+    return
+  }
 
   let data = Buffer.alloc(0);
   request.on('data', chunk => {
