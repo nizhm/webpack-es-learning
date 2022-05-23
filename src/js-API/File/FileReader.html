@@ -15,10 +15,13 @@
             margin: 0 auto;
         }
         .form-item {
-            display: inline-block;
+            /*display: inline-block;*/
             line-height: 32px;
             padding: 8px;
             margin: 8px;
+        }
+        #submit {
+            margin: 0 32px;
         }
         .form_fileList_box {
             width: 80%;
@@ -55,9 +58,11 @@
                         value="SelectFile"
                         onclick="document.getElementById('fileInput').click()"
                     />
+                    <input type="button" id="submit" value="Submit"/>
                 </p>
                 <p class="form-item">
-                    <input type="button" id="submit" value="Submit"/>
+                    <label for="contentType">contentType:</label>
+                    <select id="contentType" name="fileInput"></select>
                 </p>
             </form>
             <section class="form_fileList_box">
