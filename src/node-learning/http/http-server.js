@@ -1,7 +1,7 @@
 import http from 'http';
 import fs from 'fs';
 
-const configPath = 'config/server.json'
+const configPath = './config/server.json'
 let host = null;
 let port = null;
 try {

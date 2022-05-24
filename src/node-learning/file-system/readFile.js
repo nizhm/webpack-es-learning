@@ -1,7 +1,7 @@
 import { readFile as readFileAsync } from 'fs/promises';
 import { readFile as readFileCallback, readFileSync } from 'fs';
 
-const filePath = './files/config';
+const filePath = './files/config.json';
 const options = {
   // null(default -> buffer)/utf8/hex/utf16le/latin1/base64/ascii/binary
   encoding: null
