@@ -1,6 +1,10 @@
 import { createServer as httpCreateServer } from 'http';
 import { URL } from 'url';
 import FormData from 'form-data';
+import {
+  createReadStream as fsCreateReadStream,
+  createWriteStream as fsCreateWriteStream
+} from 'fs';
 import { config } from '../config/server.js';
 
 const handleRequest = (request, response) => {
@@ -24,14 +28,22 @@ const handleRequest = (request, response) => {
     response.setHeader('Content-Type', 'application/octet-stream');
     // response.setHeader('Content-Disposition', 'attachment;filename=' + Date.now() + '.txt');
 
-    const formData = new FormData(data.toString());
-    console.log('formData');
-    console.log(formData);
-    console.log(data.toString());
+    // const formData = new FormData(data.toString());
+    // console.log('formData');
+    // console.log(formData);
+    // console.log(data.toString());
+
+    const writeStream = fsCreateWriteStream(`../uploadFiles/${ Date.now() }.txt`);
+    writeStream.on('ready', () => {
+      writeStream.write(data);
+    });
 
     response.statusCode = 200;
     console.log('data');
-    console.log(data);
+    console.log({
+      buffer: data,
+      byteSize: data.length
+    });
     response.end(data);
   });
 };

@@ -1,8 +1,23 @@
 import { createReadStream as fsCreateReadStream } from 'fs';
 
-const smallFile = fsCreateReadStream('./files/smallOne.file');
-console.log('smallFile');
-console.log(smallFile);
-const content = smallFile.read(10);
-console.log('content');
-console.log(content);
+const readStream = fsCreateReadStream('./files/config.json');
+readStream.on('open', function (fd) {
+  console.log('open');
+  console.log(fd);
+});
+readStream.on('ready', function () {
+  console.log('ready');
+});
+let data;
+readStream.on('data', function (chunk) {
+  console.log('data');
+  data = chunk;
+  console.log(chunk);
+});
+readStream.on('close', function () {
+  console.log('close');
+  console.log({
+    buffer: data,
+    text: data.toString()
+  });
+});

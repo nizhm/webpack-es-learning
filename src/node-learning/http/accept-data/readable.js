@@ -3,7 +3,7 @@ import { URL } from 'url';
 import { config } from '../config/server.js';
 
 const handleRequest = (request, response) => {
-  console.log(request);
+  // console.log(request);
 
   if (request.method === 'GET') {
     const params = (new URL(request.headers.host + request.url)).searchParams.toString();
@@ -13,19 +13,24 @@ const handleRequest = (request, response) => {
     return
   }
 
-  let data = Buffer.alloc(0);
+  const chunkList = [];
   let chunk;
   request.on('readable', function () {
     while((chunk = this.read()) !== null) {
       console.log('chunk');
       console.log(chunk);
-      if (chunk) data = Buffer.concat([ data, chunk ], data.length + chunk.length);
+      if (chunk) chunkList.push(chunk);
     }
   });
   request.on('end', () => {
-    response.statusCode = 200;
+    response.setHeader('Access-control-Allow-Origin', '*');
+    response.setHeader('Access-control-Allow-Headers', 'Content-Type, Auth');
+    response.setHeader('Content-Type', 'application/octet-stream');
+
+    const data = Buffer.concat(chunkList);
     console.log('data');
     console.log(data);
+    response.statusCode = 200;
     response.end(data);
   });
 };

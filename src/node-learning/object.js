@@ -24,6 +24,12 @@ import stream,
   Transform
 } from 'stream';
 import buffer from 'buffer';
+import {
+  createWriteStream as fsCreateWriteStream,
+  WriteStream,
+  createReadStream as fsCreateReadStream,
+  ReadStream
+} from 'fs';
 import FormData from 'form-data';
 // import path from 'src/node-learning/path/path.js';
 
@@ -38,7 +44,7 @@ defTag(Object.prototype, 'Object');
 //   console.log(`Server running at http://192.168.1.150:8080`);
 // });
 
-// console.log(IncomingMessage.prototype.__proto__ === Readable.prototype);
-// console.log(objectGetOwnPropertyDescriptors(ClientRequest));
-// console.log(objectGetOwnPropertyNames(objectGetOwnPropertyDescriptors(ClientRequest)).join('\n'));
-console.log(getChainOf(FormData));
+// console.log(WriteStream.prototype.__proto__ === WriteStream.prototype);
+console.log(objectGetOwnPropertyDescriptors(ReadStream));
+console.log(objectGetOwnPropertyNames(objectGetOwnPropertyDescriptors(ReadStream)).join('\n'));
+console.log(getChainOf(ReadStream));
