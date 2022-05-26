@@ -1,18 +1,21 @@
 const OverallMethods = [
-  'CONNECT',
-  'GET',
-  'HEAD',
   'OPTIONS',
-  'PATCH',
+  'GET',
   'POST',
   'PUT',
   'DELETE',
+  'CONNECT',
+  'HEAD',
+  'PATCH',
   'TRACE'
 ];
 
-const PayloadMethods = 'POST/PUT/DELETE'.split('/');
+const PayloadMethods = OverallMethods.slice(2, 5);
+
+const CORSMethods = OverallMethods.slice(0, 5);
 
 export {
   OverallMethods,
-  PayloadMethods
+  PayloadMethods,
+  CORSMethods
 }

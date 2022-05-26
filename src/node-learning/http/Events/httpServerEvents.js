@@ -2,6 +2,7 @@ import { createServer as httpCreateServer } from 'http';
 import { networkInterfaces as osNetworkInterfaces } from 'os';
 import handleIncomingMessage from './incomingMessageEvents.js';
 import listenServerResponse from './serverResponseEvents.js';
+import { CORSMethods } from '../httpMethods.js';
 
 const network = osNetworkInterfaces();
 const IP = network[Object.getOwnPropertyNames(network)[0]].find(el => el.family === 'IPv4').address;
@@ -69,7 +70,7 @@ httpServer.on('request', function handleRequest(incomingMessage,serverResponse) 
   console.log('request', incomingMessage.method);
   serverResponse.setHeader('Access-control-Allow-Origin', '*');
   serverResponse.setHeader('Access-control-Allow-Headers', 'Content-Type');
-  serverResponse.setHeader('Access-control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
+  serverResponse.setHeader('Access-control-Allow-Methods', CORSMethods.join());
 
   listenServerResponse(serverResponse);
   handleIncomingMessage(incomingMessage, serverResponse);
