@@ -1,7 +1,8 @@
+import { PayloadMethods } from '../httpMethods.js';
+
 function handleIncomingMessage(incomingMessage, serverResponse){
   const { method, headers: { origin } } = incomingMessage;
-  const payloadMethods = [ 'POST', 'PUT', 'DELETE' ];
-  if (!payloadMethods.includes(method)) {
+  if (!PayloadMethods.includes(method)) {
     const msg = `You send A ${ method } request from ${ origin }`;
     console.log(msg);
     serverResponse.statusCode = 200;
@@ -78,6 +79,7 @@ function handleIncomingMessage(incomingMessage, serverResponse){
     console.log(data);
     serverResponse.statusCode = 200;
     serverResponse.end(`${method} request success with ${data.length} bytes data`);
+    serverResponse.end();
     console.log('after end');
 
   });
