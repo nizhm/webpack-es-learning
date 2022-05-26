@@ -1,6 +1,7 @@
 import { createServer as httpCreateServer } from 'http';
 import { networkInterfaces as osNetworkInterfaces } from 'os';
 import handleIncomingMessage from './incomingMessageEvents.js';
+import listenServerResponse from './serverResponseEvents.js';
 
 const network = osNetworkInterfaces();
 const IP = network[Object.getOwnPropertyNames(network)[0]].find(el => el.family === 'IPv4').address;
@@ -65,13 +66,13 @@ httpServer.on('connection', function handleConnection(socket) {
  * when A request arrives
  */
 httpServer.on('request', function handleRequest(incomingMessage,serverResponse) {
-  console.log('request');
+  console.log('request', incomingMessage.method);
   serverResponse.setHeader('Access-control-Allow-Origin', '*');
+  serverResponse.setHeader('Access-control-Allow-Headers', 'Content-Type');
+  serverResponse.setHeader('Access-control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
 
-  handleIncomingMessage(incomingMessage);
-
-  serverResponse.statusCode = 200;
-  serverResponse.end('OK');
+  listenServerResponse(serverResponse);
+  handleIncomingMessage(incomingMessage, serverResponse);
 });
 
 /**
