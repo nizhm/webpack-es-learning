@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>XMLHttpRequest</title>
+    <style>
+        .row {
+            text-align: center;
+            margin: 32px 0;
+        }
+    </style>
 </head>
 <body>
-    <p style="text-align: center; margin: 32px 0">
+    <p class="row">
+        <label for="xhrGet">HTTPS:</label>
         <input type="button" id="xhrGet" value="GET"/>
         <input type="button" id="xhrPost" value="POST"/>
     </p>
+    <p class="row">
+        <label for="socket">TCP:</label>
+        <input type="button" id="socket" value="socket"/>
+    </p>
     <script type="module" src="./js/xhr.js"></script>
+    <script type="module" src="./js/socket.js"></script>
 </body>
 </html>
