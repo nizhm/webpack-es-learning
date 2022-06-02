@@ -1,12 +1,12 @@
 const socketBtn = document.getElementById('socket');
 
-const URL = 'ws://localhost:9009';
+const URL = 'ws://localhost:9301';
 
 function listenSocket(socket) {
   socket.addEventListener('open', function handleOpen(event) {
     console.log('socket open');
     console.log(event);
-    socket.send('A connection from client');
+    socket.send(`(${Date.now()})A connection from client`);
     // socket.send();
   });
 
@@ -27,7 +27,7 @@ function listenSocket(socket) {
 }
 
 function launchSocket() {
-  const socket = new WebSocket(URL);
+  const socket = new WebSocket(URL, 'ws-first');
   listenSocket(socket);
 }
 
