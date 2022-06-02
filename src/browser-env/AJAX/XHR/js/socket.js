@@ -6,7 +6,12 @@ function listenSocket(socket) {
   socket.addEventListener('open', function handleOpen(event) {
     console.log('socket open');
     console.log(event);
-    socket.send(`(${Date.now()})A connection from client`);
+    const msg = `(${ Date.now() })A connection from client`;
+    for(let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        socket.send(msg);
+      }, i * 1000)
+    }
     // socket.send();
   });
 
