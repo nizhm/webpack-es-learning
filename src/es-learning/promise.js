@@ -21,16 +21,11 @@
 //  console.log(resultPromise)
 //},5000)
 //console.log(Promise.resolve(new Error()))
-const promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('error')
-  }, 1000)
-})
-promise.then(res => {
-  throw new Error(res)
-  console.log('then:' + res)
+import axi from './axi.js';
+
+const req = axi();
+req.then(res => {
+  console.log(res);
 }).catch(err => {
-  console.log('error:' + (typeof err === 'object'))
-}).finally(() => {
-  console.log('finally:')
-})
+  console.error(err);
+});
