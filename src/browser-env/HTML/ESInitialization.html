@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ESInitialization</title>
+</head>
+<body>
+  <p>ECMAScript Initialization</p>
+  <script>
+    debugger;
+    var msg = 'Script1';
+    function logMsg(msg) {
+      debugger;
+      const message = msg;
+      console.log(message);
+    }
+    logMsg(msg);
+  </script>
+  <script type="module">
+    debugger;
+    const place = 'Module';
+    console.log(place);
+    console.log(msg);
+  </script>
+  <script>
+    const position = 'Script2';
+    console.log(position);
+  </script>
+</body>
+</html>
