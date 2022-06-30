@@ -8,7 +8,7 @@
   <p>ECMAScript Initialization</p>
   <script>
     debugger;
-    var msg = 'Script1'; // added to [[ObjectRecord]], which means `window`/`Global`.
+    var msg = 'Script1'; // added to GlobalLexicalEnvironment.[[GlobalEnvironmentRecord]].[[ObjectRecord]], which means `window`/`Global`.
     function logMsg(msg) {
       debugger;
       const message = msg;
@@ -24,8 +24,8 @@
     console.log(position);
   </script>
   <script>
-    const position = 'Script2'; // added to [[DeclarativeRecord]]
-    // override window.console, cause [[DeclarativeRecord]] has priority.
+    const position = 'Script2'; // added to GlobalLexicalEnvironment.[[GlobalEnvironmentRecord]].[[DeclarativeRecord]]
+    // override window.console, cause GlobalLexicalEnvironment.[[GlobalEnvironmentRecord]].[[DeclarativeRecord]] has priority.
     // Note: window.console reserves its native.
     const console = {
       log(msg) {
