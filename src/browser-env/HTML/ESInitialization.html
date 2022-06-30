@@ -8,7 +8,7 @@
   <p>ECMAScript Initialization</p>
   <script>
     debugger;
-    var msg = 'Script1';
+    var msg = 'Script1'; // added to [[ObjectRecord]], which means `window`/`Global`.
     function logMsg(msg) {
       debugger;
       const message = msg;
@@ -21,9 +21,10 @@
     const place = 'Module';
     console.log(place);
     console.log(msg);
+    console.log(position);
   </script>
   <script>
-    const position = 'Script2';
+    const position = 'Script2'; // added to [[DeclarativeRecord]]
     console.log(position);
   </script>
 </body>
