@@ -14,6 +14,15 @@
  * if absent and strict mode, `this` is assigned as `undefined`.)
  *
  * 5.For constructors(invoked by `new` keyword), `this` exactly refer to the newly created object.
+ *
+ */
+
+/**
+ * if absent and non-strict mode, refers to the `globalThis`;
+ * caller object is related with function invoked ways, like `obj.fn()` means the caller object is `obj`,
+ * however invoke `fn()` directly usually(do not think of `with`) means the caller object is absent(or undefined),
+ * which will transform to `globalThis`;
+ * @since 20220706
  */
 
 
